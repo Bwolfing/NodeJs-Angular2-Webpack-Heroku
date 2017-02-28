@@ -19,6 +19,9 @@ app.set('port', (process.env.PORT || 3000));
 app.get('/api', function (request, response) {
     response.json({ 'testKey': 'testVal' })
 })
+app.get('/api/other-page-data', function(request, response) {
+    response.json(["Item 1", "More items", "We hit the API again"]);
+})
 
 //For avoidong Heroku $PORT error
 app.get('*', function (request, response) {
