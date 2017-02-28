@@ -3,10 +3,10 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 
 @Component({
 	selector: 'app',
-	template: `
-	<h1>NodeJS + Angular2 + Webpack + Heroku</h1>
-	<p>Server data: {{serverData}}</p>
-	`
+	template: require("./app.component.html"),
+	styles: [
+		require("./app.component.scss"),
+	]
 })
 export class AppComponent implements OnInit {
 	serverData: string;

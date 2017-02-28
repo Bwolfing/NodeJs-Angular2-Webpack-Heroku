@@ -16,4 +16,3 @@ import 'core-js/es6/weak-map';
 import 'core-js/es6/weak-set';
 import 'core-js/es6/typed';
 import 'core-js/es6/reflect';
-import 'reflect-metadata/Reflect.js';
