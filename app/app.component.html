@@ -2,3 +2,16 @@
     <h1>NodeJS + Angular2 + Webpack + Heroku</h1>
 </div>
 <p>Server data: {{serverData}}</p>
+<ul class="nav nav-pills">
+    <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/home']">
+            Home
+        </a>
+    </li>
+    <li [routerLinkActive]="['active']">
+        <a [routerLink]="['/other-page']">
+            A different page
+        </a>
+    </li>
+</ul>
+<router-outlet></router-outlet>

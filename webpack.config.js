@@ -1,3 +1,6 @@
+var isDevBuild = process.argv.indexOf("--env.prod") < 0;
+var isAll = process.argv.indexOf("--env.pack-all") >= 0;
+var isVendorOnly = process.argv.indexOf("--env.pack-vendor") >= 0;
 var path = require("path");
 var merge = require("webpack-merge");
 var webpack = require("webpack");
@@ -22,6 +25,17 @@ var sharedConfig = {
         // Silences warning, found answer here: http://bit.ly/2mBnmg2
         exprContextCritical: false,
     },
+    plugins: [].concat(isDevBuild ? [] : [
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false, },
+            include: /\.js$/
+        }),
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/,
+            cssProcessorOptions: { discardComments: { removeAll: true } },
+        })
+    ])
 };
 
 var applicationBundle = merge(sharedConfig, {
@@ -50,16 +64,18 @@ var vendorBundle = merge(sharedConfig, {
     plugins: [
         extractCss,
         new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery" }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false, },
-            include: /\.js$/
-        }),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/,
-            cssProcessorOptions: { discardComments: { removeAll: true } },
-        }),
     ],
 });
 
-module.exports = [vendorBundle, applicationBundle];
+if (isAll)
+{
+    module.exports = [vendorBundle, applicationBundle];
+}
+else if (isVendorOnly)
+{
+    module.exports = [vendorBundle];
+}
+else
+{
+    module.exports = [applicationBundle];
+}

@@ -21,7 +21,7 @@ app.get('/api', function (request, response) {
 })
 
 //For avoidong Heroku $PORT error
-app.get('/', function (request, response) {
+app.get('*', function (request, response) {
     response.sendFile(__dirname + '/public/index.html');
 }).listen(app.get('port'), function () {
     console.log('App is running, server is listening on port ', app.get('port'));
