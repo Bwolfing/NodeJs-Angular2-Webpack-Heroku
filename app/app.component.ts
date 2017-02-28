@@ -6,6 +6,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 	template: `
 	<h1>NodeJS + Angular2 + Webpack + Heroku</h1>
 	<p>Server data: {{serverData}}</p>
+	<p>boop</p>
 	`
 })
 export class AppComponent implements OnInit {

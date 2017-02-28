@@ -1,3 +1,4 @@
+import "angular2-universal-polyfills/browser";
 import 'core-js/es6/symbol';
 import 'core-js/es6/object';
 import 'core-js/es6/function';
@@ -15,5 +16,4 @@ import 'core-js/es6/weak-map';
 import 'core-js/es6/weak-set';
 import 'core-js/es6/typed';
 import 'core-js/es6/reflect';
-import 'zone.js/dist/zone';
 import 'reflect-metadata/Reflect.js';

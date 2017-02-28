@@ -1,12 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "typeRoots": [
+      "node_modules",
+      "node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "jquery"
+    ]
   }
 }

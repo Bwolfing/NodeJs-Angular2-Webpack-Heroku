@@ -1,11 +1,19 @@
-import {bootstrap}    from '@angular/platform-browser-dynamic';
-import {HTTP_PROVIDERS} from '@angular/http';
-
-import {AppComponent} from './app.component';
-
+import { enableProdMode } from '@angular/core';
+import { platformUniversalDynamic } from "angular2-universal";
+import { AppModule } from './app.module';
 import 'rxjs/add/operator/map';
-
-import {enableProdMode} from '@angular/core';
 enableProdMode();
 
-bootstrap(AppComponent, [HTTP_PROVIDERS]).catch(err => console.error(err));
+const platform = platformUniversalDynamic();
+const bootApp = () => {
+    platform.bootstrapModule(AppModule).catch(err => console.error(err));
+}
+
+if (document.readyState === "complete")
+{
+    bootApp();
+}
+else
+{
+    document.addEventListener("DOMContentLoaded", bootApp);
+}
