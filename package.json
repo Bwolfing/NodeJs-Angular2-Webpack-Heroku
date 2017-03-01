@@ -9,7 +9,8 @@
   },
   "scripts": {
     "prestart": "webpack --env.pack-all",
-    "start": "concurrently \"webpack --watch\" \"nodemon server.js\""
+    "start-dev": "concurrently \"webpack --watch\" \"nodemon server.js\"",
+    "start-prod": "concurrently \"webpack --env.pack-all --env.prod\" \"nodemon server.js\""
   },
   "engines": {
     "node": "~6.2.1",
